@@ -1,43 +1,84 @@
 # GanweiPact — A Blockchain + AI Platform for Trusted Agricultural Order Fulfillment and Traceability
 
+> 陇原信约——甘味智溯链 ｜ 大学生创新创业训练计划（创新训练项目）
+
 梦浮坂创意开发团队第一项自主开发项目。
 
 面向甘肃 "甘味" 特色农产品，以区块链 + AI 构建订单可信履约与全链路溯源平台：订单规则上链自动执行，AI 定级建议、客商验收确认，让 "签约不算数" 变成 "代码说了算"。
 
-“陇原信约——甘味智溯链”是面向甘肃“甘味”特色农产品，融合区块链与AI技术的订单可信履约与全链路溯源平台。针对订单农业普遍存在的签约履约约束力弱、溯源信息造假、农产品品质定级高度依赖人工目测、农业经营主体缺乏可信信用数据、难以获得金融扶持等现实痛点，项目以国产开源FISCO BCOS联盟链为底层底座，构建“AI定级建议→客商验收确认→合约自动记录完结→全程链上存证”的可信业务闭环。
+## 项目简介
 
-农户录入产品信息，经客商确认后完成下单，农户接单发货，全流程均支持拍照留证，所有业务记录通过Merkle树批量上链存证，保障原始数据真实可信。订单的定级标准、验收要求、冷静期等规则固化于智能合约中自动执行，并依托AI实现客观品质判定，有效防范压级压价现象。平台通过照片指纹、定位校验结果、服务器时间戳、拍摄者身份四要素完成源头可信采集（精确坐标不上链），结合批量存证机制，确保原始数据真实可信、链上记录不可篡改。项目配套定期复审机制：对低置信度样本实行100%复审，对优质果与次果按比例抽样核验，并利用真实业务数据持续校准AI模型，稳步提升识别精度。
+"陇原信约——甘味智溯链"是面向甘肃"甘味"特色农产品，融合区块链与 AI 技术的订单可信履约与批次溯源**原型研究项目**。针对订单农业普遍存在的签约履约约束力弱、溯源信息难以核验、农产品品质定级高度依赖人工目测、农业经营主体缺乏可信信用数据等现实痛点，项目以国产开源 FISCO BCOS 联盟链为实验环境，构建"AI 定级建议 → 客商验收确认 → 合约记录状态完结 → 批次数据存证"的可信业务闭环。
 
-本项目不涉及真实资金流转，不提供支付服务，不属于电商交易平台，不收取任何交易服务费。
+农户录入产品信息，经客商确认后完成下单，农户接单发货，全流程支持拍照留证，业务记录经 Merkle 树批量上链存证。订单的定级标准、验收要求、冷静期等规则固化于智能合约中自动执行；AI 提供外观等级建议（果径、色泽），其结论为**定级建议**，结算效力来自客商验收确认，以此降低定级争议的处理成本，防范压级压价现象。平台通过照片指纹、定位围栏校验结果、服务器时间戳、拍摄者身份四要素约束采集源头（精确坐标不上链，溯源展示到县级），与 Merkle 批量存证共同构成两层机制：**前者用于约束采集行为，后者用于发现提交后的数据变更**。项目配套复审机制：低置信度样本转人工复核，A/C 级按比例抽审，复审不改变已完结订单，并以真实业务数据持续校准模型。
 
-团队使命愿景：助力甘肃优质特色农产品拓宽销路，保障农户回款权益，帮助经营主体获得信贷支持，以数字化技术降低订单农业的信任成本。
+### 边界说明（重要）
 
-GanweiPact（陇原信约）aims to build a blockchain + AI platform for trusted agricultural order fulfillment and full-chain traceability.
+- 哈希与 Merkle 根用于发现数据提交后是否被改动，**不能证明照片内容或定位在采集时必然真实**；真实产地仍需现场核验与抽样。链上存证保证"上链后不可篡改"，源头真实由可信采集层负责——这是两道防线，不能混为一谈。
+- 首版仅用测试代币演示状态流转，不涉及真实资金流转，不提供支付服务，不属于电商交易平台，不收取任何交易服务费。
+- 履约记录能否作为金融服务的辅助材料，取决于金融机构的独立评估与数据授权，本项目不作授信或融资承诺。
 
-## Roadmap
+**团队使命愿景：** 助力甘肃优质特色农产品拓宽销路，研究以可复核的订单与批次记录降低订单农业信任成本的可行路径。
 
-### Priority A — Core
-- M1 TrustedCapture
-- M2 TraceNotary
-- M3 AIQualityGate
-- M4 OrderPact
-- M5 IdentityRegistry
-- M6 PactPortal
-- M7 APIHub
-- M8 BatchProof
-- M9 Hardening
+## 技术栈
 
-### Priority B — Extended
-- M10 TermBuilder
-- M11 TrustBoard
-- M12 AdminConsole
+| 层次 | 技术 |
+|---|---|
+| 区块链 | FISCO BCOS 联盟链 + WeBASE 控制台，Solidity 智能合约 |
+| 后端 | Python 3 + Django，MySQL |
+| 前端 | Vue 3（10 个页面） |
+| AI 定级 | OpenCV 图像分析（果径、色泽等外观指标） |
+| 存证 | Merkle 树批量上链存证，IoT 模拟数据源 |
 
-### Priority C — Governance & Docs
-- M13 ArbitrationCharter
-- M14 BusinessBlueprint
-- M15 BrandOnboarding
-- M16 ChainRationale
+## 功能模块（M1–M16）
+
+### A 档（真实开发，答辩现场可演示，逻辑完整）
+
+| 模块 | 名称 | 预计工时 |
+|---|---|---|
+| M1 | 可信采集层（TrustedCapture） | 2 人天 |
+| M2 | 溯源存证合约与服务（TraceNotary） | 2 人天 |
+| M3 | AI 质检与责任链（AIQualityGate） | 3 人天 |
+| M4 | 订单条件结算合约（OrderPact） | 5 人天 |
+| M5 | 身份合约与角色体系（IdentityRegistry） | 1 人天 |
+| M6 | Vue 3 前端 10 个页面（PactPortal） | 4 人天 |
+| M7 | Django 后端与防抄码检测（APIHub） | 2 人天 |
+| M8 | IoT 模拟源与 Merkle 批量存证（BatchProof） | 1 人天 |
+| M9 | 安全加固（Hardening） | 2 人天 |
+
+### B 档（可演示档，逻辑简化）
+
+| 模块 | 名称 | 预计工时 |
+|---|---|---|
+| M10 | 订单沟通与承诺转条款（TermBuilder） | 1 人天 |
+| M11 | 数据看板与信用分（TrustBoard） | 1 人天 |
+| M12 | 管理后台（AdminConsole） | 1 人天 |
+
+### C 档（方案与叙事，本轮不开发）
+
+| 模块 | 名称 |
+|---|---|
+| M13 | 联盟治理与仲裁章程（ArbitrationCharter） |
+| M14 | 商业模式与测算（BusinessBlueprint） |
+| M15 | 冷启动与品牌授权路径（BrandOnboarding） |
+| M16 | 区块链必要性与隐私（ChainRationale） |
+
+## 创新点
+
+1. **订单规则与交付记录在链上对齐**：把价格、等级标准、交货期、违约条款等约定写入智能合约，交货、验收、结算的状态变化由合约规则驱动，研究"记录展示"与"规则执行"耦合后能否降低订单核对成本。
+2. **AI 分级与合约结算的耦合设计**：AI 输出的等级直接进入合约结算公式（单价 × 等级系数 × 数量），两者互为条件，并以对照实验检验其相对单一方案的差异。
+3. **采集约束与存证完整性的两层机制**：第一层在采集端绑定照片指纹、定位围栏校验结果、服务器时间戳、拍摄者身份，提高伪造成本；第二层用 Merkle 批量存证发现提交后的数据变更。
+4. **分级结果的复审与模型校准机制**：低置信度样本 100% 转人工复核，A/C 级按比例抽审，用真实业务数据持续校准模型。
+
+## 项目资料
+
+- 📖 完整资料站（项目计划书、功能清单、接口契约、各模块技术文档等）：[zippy-cuanxi.github.io/longyuan-xinyue-docs](https://zippy-cuanxi.github.io/longyuan-xinyue-docs/)
+- 申报与设计文档：项目计划书 v3.2、功能清单 v7.2、前后端接口契约 v0.4、模块技术与开发环境规划 v1.1、五阶段实施计划 v1.1
+
+> **口径说明：** 本项目当前处于研究与开发规划阶段，M1–M16 均为待办规格，统一使用"计划、拟开展、待验证"表述；引用的市场数据凡标注〔来源待补〕者，在补齐可查证来源前不作为立项必要性或商业测算的主论据。
 
 ## Contributing
 
-Welcome to open issues and pull requests. For direct write access, please contact the repository owner to be added as a collaborator.
+欢迎通过 Issue 与 Pull Request 参与开发。需要直接写入权限请联系仓库所有者添加为 Collaborator。
+
+GanweiPact (陇原信约) aims to build a blockchain + AI platform for trusted agricultural order fulfillment and full-chain traceability.
