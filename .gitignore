@@ -1,0 +1,119 @@
+# ===== 环境变量 / 密钥 =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+
+# ===== Python / Django =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv/
+.python-version
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# ===== Node / Vue 前端 =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+dist-ssr/
+.vite/
+coverage/
+*.local
+
+# 包管理器锁文件按团队约定提交，这里保留 package-lock.json
+# package-lock.json
+
+# ===== Solidity / FISCO BCOS / 区块链 =====
+# 编译产物
+build/contracts/
+cache/
+artifacts/
+typechain-types/
+# 节点数据与证书（联盟链节点证书属敏感文件，不入库）
+nodes/
+certs/
+*.crt
+*.nodekey
+*.keystore
+*.srl
+fisco-bcos-data/
+# WeBASE 导出
+webase-deploy/
+.sol/hardhat/
+
+# ===== AI 模型 / 数据集（大文件不入库，用 Git LFS 或外链） =====
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.onnx
+*.pkl
+*.joblib
+datasets/
+models/
+
+# ===== IDE / 编辑器 =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ===== 操作系统 =====
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Linux
+*~
+
+# ===== 其他 =====
+*.tmp
+*.bak
+*.orig
+.DS_Store?
